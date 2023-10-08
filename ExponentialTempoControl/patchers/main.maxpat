@@ -140,6 +140,7 @@
 			}
 , 			{
 				"box" : 				{
+					"annotation_name" : "Pre read",
 					"fontsize" : 12.0,
 					"id" : "obj-133",
 					"maxclass" : "live.numbox",
@@ -152,6 +153,7 @@
 					"presentation_rect" : [ 189.0, 11.0, 53.0, 18.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_annotation_name" : "Pre read",
 							"parameter_longname" : "live.numbox[1]",
 							"parameter_mmax" : 1.0,
 							"parameter_shortname" : "live.numbox[1]",
@@ -280,6 +282,8 @@
 			}
 , 			{
 				"box" : 				{
+					"annotation" : "Tempo change direction",
+					"annotation_name" : "Tempo change direction",
 					"fontsize" : 12.0,
 					"id" : "obj-105",
 					"maxclass" : "live.menu",
@@ -292,7 +296,9 @@
 					"presentation_rect" : [ 89.0, 98.5, 46.0, 18.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_annotation_name" : "Tempo change direction",
 							"parameter_enum" : [ "up", "down" ],
+							"parameter_info" : "Tempo change direction",
 							"parameter_initial" : [ 1.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_longname" : "live.menu[1]",
@@ -333,7 +339,10 @@
 			}
 , 			{
 				"box" : 				{
+					"annotation" : "Tempo change ratio at end of loop",
+					"annotation_name" : "Tempo change ratio",
 					"fontsize" : 12.0,
+					"hint" : "Change ratio in tempo relative to base tempo at the end of the loop.",
 					"id" : "obj-91",
 					"maxclass" : "live.menu",
 					"numinlets" : 1,
@@ -345,7 +354,9 @@
 					"presentation_rect" : [ 21.0, 98.5, 44.0, 18.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_annotation_name" : "Tempo change ratio",
 							"parameter_enum" : [ "1", "1.5", "2", "3", "4", "6", "8" ],
+							"parameter_info" : "Tempo change ratio at end of loop",
 							"parameter_initial" : [ 2.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_longname" : "live.menu",
@@ -392,7 +403,9 @@
 			}
 , 			{
 				"box" : 				{
+					"annotation_name" : "Base tempo",
 					"fontsize" : 12.0,
+					"hint" : "The base tempo at the start of the loop",
 					"id" : "obj-84",
 					"maxclass" : "live.numbox",
 					"numinlets" : 1,
@@ -405,6 +418,7 @@
 					"presentation_rect" : [ 80.0, 8.0, 55.0, 18.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_annotation_name" : "Base tempo",
 							"parameter_initial" : [ 140.0 ],
 							"parameter_initial_enable" : 1,
 							"parameter_longname" : "base tempo",
@@ -430,7 +444,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 344.0, 177.0, 36.0, 22.0 ],
+					"patching_rect" : [ 344.0, 177.0, 36.0, 38.0 ],
 					"text" : "+ 0.1"
 				}
 
@@ -443,7 +457,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 344.0, 470.0, 84.0, 23.0 ],
-					"presentation_linecount" : 2,
 					"text" : "set tempo $1"
 				}
 
@@ -479,7 +492,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "float" ],
-					"patching_rect" : [ 389.0, 177.0, 64.5, 22.0 ],
+					"patching_rect" : [ 389.0, 177.0, 64.5, 23.0 ],
 					"text" : "t f f"
 				}
 
@@ -510,7 +523,10 @@
 			}
 , 			{
 				"box" : 				{
+					"annotation" : "Loop length in bars",
+					"annotation_name" : "Loop length",
 					"fontsize" : 12.0,
+					"hint" : "Loop length (bars)",
 					"id" : "obj-60",
 					"maxclass" : "live.numbox",
 					"numinlets" : 1,
@@ -522,6 +538,8 @@
 					"presentation_rect" : [ 80.0, 40.5, 55.0, 18.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_annotation_name" : "Loop length",
+							"parameter_info" : "Loop length in bars",
 							"parameter_longname" : "live.numbox",
 							"parameter_mmax" : 128.0,
 							"parameter_mmin" : 1.0,
@@ -553,6 +571,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 11.595186999999999,
 					"format" : 6,
+					"hint" : "The tempo which Live reports in realtime, just for compare/debug",
 					"id" : "obj-31",
 					"maxclass" : "flonum",
 					"numinlets" : 1,
@@ -602,7 +621,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 241.72222899999997, 110.5, 94.0, 33.0 ],
+					"patching_rect" : [ 241.72222899999997, 110.5, 96.0, 33.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 189.0, 86.5, 182.0, 20.0 ],
 					"text" : "the tempo which live reports"
@@ -679,7 +698,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 0.0, 169.0, 150.0, 20.0 ],
+					"patching_rect" : [ 0.0, 169.0, 150.0, 21.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 169.0, 150.0, 21.0 ],
 					"text" : "Device size vertical limit"
