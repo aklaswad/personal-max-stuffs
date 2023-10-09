@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 309.0, 185.0, 1138.0, 805.0 ],
+		"rect" : [ 277.0, 171.0, 1138.0, 805.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 13.0,
@@ -153,7 +153,7 @@
 							"parameter_info" : "Base probability. Timeline function will be applied at rest of base probability.",
 							"parameter_initial" : [ 100.0 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "live.dial[1]",
+							"parameter_longname" : "Base probability",
 							"parameter_mmax" : 100.0,
 							"parameter_shortname" : "Base probability",
 							"parameter_type" : 0,
@@ -399,9 +399,9 @@
 						"valueof" : 						{
 							"parameter_enum" : [ "1", "2", "4", "8", "16", "32", "64", "128" ],
 							"parameter_info" : "timeline loop length (bars)",
-							"parameter_longname" : "live.tab",
+							"parameter_longname" : "Loop length",
 							"parameter_mmax" : 7,
-							"parameter_shortname" : "loop bars",
+							"parameter_shortname" : "Loop length",
 							"parameter_type" : 2,
 							"parameter_unitstyle" : 9
 						}
@@ -842,9 +842,9 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-140" : [ "live.dial[1]", "Base probability", 0 ],
+			"obj-140" : [ "Base probability", "Base probability", 0 ],
 			"obj-21" : [ "function", "Probability timeline", 0 ],
-			"obj-59" : [ "live.tab", "loop bars", 0 ],
+			"obj-59" : [ "Loop length", "Loop length", 0 ],
 			"parameterbanks" : 			{
 				"0" : 				{
 					"index" : 0,
