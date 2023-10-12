@@ -2,9 +2,9 @@
 	"name" : "PolyFanSynth",
 	"version" : 1,
 	"creationdate" : 3779967553,
-	"modificationdate" : 3779967889,
+	"modificationdate" : 3779973622,
 	"viewrect" : [ 50.0, 132.0, 300.0, 500.0 ],
-	"autoorganize" : 1,
+	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
 	"autolocalize" : 0,
@@ -22,6 +22,14 @@
 			}
 
 		}
+,
+		"code" : 		{
+			"PolyFanOsc.gendsp" : 			{
+				"kind" : "gendsp",
+				"local" : 1
+			}
+
+		}
 
 	}
 ,
@@ -34,7 +42,7 @@
 	}
 ,
 	"detailsvisible" : 0,
-	"amxdtype" : 0,
+	"amxdtype" : 1768515945,
 	"readonly" : 0,
 	"devpathtype" : 0,
 	"devpath" : ".",
