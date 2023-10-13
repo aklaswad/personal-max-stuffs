@@ -41,6 +41,31 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"format" : 6,
+					"id" : "obj-65",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 855.0, 120.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-66",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "bang" ],
+					"patching_rect" : [ 855.0, 184.0, 34.0, 22.0 ],
+					"text" : "line~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"format" : 6,
 					"id" : "obj-63",
 					"maxclass" : "flonum",
 					"numinlets" : 1,
@@ -141,7 +166,7 @@
 				"box" : 				{
 					"id" : "obj-45",
 					"maxclass" : "newobj",
-					"numinlets" : 7,
+					"numinlets" : 8,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
 					"patcher" : 					{
@@ -184,6 +209,18 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-17",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 829.0, 261.0, 131.0, 22.0 ],
+									"text" : "in 8 @comment Rotate"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-15",
 									"maxclass" : "newobj",
@@ -268,13 +305,13 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "Param mirror(1);\r\n\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = wrap(phasor(freq), 0,1);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\n\r\nmodDepth = clip(in7, 0, 1);\r\n\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nif ( mirror && basePhase < 0.5 ) {\r\n  basePhase = basePhase - 1.;\r\n}\r\n\r\nleafSize = 1 / numLeaves;\r\nsurplus = (numLeaves % 1) * leafSize;\r\ngapPhase = leafSize * floor(numLeaves/2);\r\n\r\nphaseInLeaf = 0;\r\nphaseZeroOfLeaf = 0;\r\n\r\nif ( basePhase < gapPhase + 0.5 * surplus ) {\r\n  vPhase = basePhase;\r\n  phaseZeroOfLeaf = floor(vPhase / leafSize) * leafSize;\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = (1-modDepth) + modDepth * cos(twopi*(phaseInLeaf * 1));\r\n  theta = twopi * (  phaseZeroOfLeaf + (phaseInLeaf / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;\r\n}\r\nelse {\r\n  vPhase = basePhase - 1;\r\n  phaseZeroOfLeaf = leafSize * floor(vPhase/leafSize);\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = (1-modDepth) + modDepth * cos(twopi*(phaseInLeaf * 1));\r\n  theta = twopi * (  phaseZeroOfLeaf + ((phaseInLeaf) / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;\r\n}\r\n",
+									"code" : "\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = wrap(phasor(freq), 0,1);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\n\r\nmodDepth = clip(in7, 0, 1);\r\nrotate = clip(in8, 0,1);\r\n\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nleafSize = 1 / numLeaves;\r\nsurplus = (numLeaves % 1) * leafSize;\r\ngapPhase = leafSize * floor(numLeaves/2);\r\n\r\n\r\nif ( basePhase < gapPhase + 0.5 * surplus ) {\r\n  vPhase = basePhase;\r\n}\r\nelse {\r\n  vPhase = basePhase - 1;\r\n\r\n}\r\n\r\n  phaseZeroOfLeaf = leafSize * floor(vPhase/leafSize);\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = (1-modDepth) + modDepth * cos(twopi*(phaseInLeaf * 1));\r\n  theta = twopi * ( rotate + phaseZeroOfLeaf + ((phaseInLeaf) / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;",
 									"fontface" : 0,
 									"fontname" : "Consolas",
 									"fontsize" : 16.0,
 									"id" : "obj-5",
 									"maxclass" : "codebox",
-									"numinlets" : 7,
+									"numinlets" : 8,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 25.0, 50.0, 781.0, 627.0 ]
@@ -342,6 +379,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-5", 7 ],
+									"source" : [ "obj-17", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-4", 0 ],
 									"source" : [ "obj-5", 0 ]
 								}
@@ -373,32 +417,6 @@
 ,
 					"patching_rect" : [ 21.0, 318.0, 689.0, 22.0 ],
 					"text" : "gen~ PolyFanOsc"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"attr" : "mirror",
-					"displaymode" : 8,
-					"id" : "obj-40",
-					"lock" : 1,
-					"maxclass" : "attrui",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 1,
-					"patching_rect" : [ 116.0, 127.0, 150.0, 22.0 ],
-					"saved_attribute_attributes" : 					{
-						"valueof" : 						{
-							"parameter_invisible" : 1,
-							"parameter_longname" : "vz.attractr",
-							"parameter_shortname" : "vz.attractr",
-							"parameter_type" : 3
-						}
-
-					}
-,
-					"varname" : "vz.attractr"
 				}
 
 			}
@@ -506,7 +524,7 @@
 			}
 , 			{
 				"box" : 				{
-					"bufsize" : 104,
+					"bufsize" : 98,
 					"calccount" : 4,
 					"id" : "obj-9",
 					"maxclass" : "scope~",
@@ -663,7 +681,7 @@
 			}
 , 			{
 				"box" : 				{
-					"bufsize" : 104,
+					"bufsize" : 98,
 					"calccount" : 4,
 					"id" : "obj-27",
 					"maxclass" : "scope~",
@@ -700,7 +718,7 @@
 			}
 , 			{
 				"box" : 				{
-					"bufsize" : 104,
+					"bufsize" : 98,
 					"calccount" : 4,
 					"id" : "obj-4",
 					"maxclass" : "scope~",
@@ -807,13 +825,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-36", 0 ],
 					"source" : [ "obj-37", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-45", 0 ],
-					"source" : [ "obj-40", 0 ]
 				}
 
 			}
@@ -1030,6 +1041,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-66", 0 ],
+					"source" : [ "obj-65", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 7 ],
+					"source" : [ "obj-66", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-71", 1 ],
 					"source" : [ "obj-69", 1 ]
 				}
@@ -1076,7 +1101,6 @@
  ],
 		"parameters" : 		{
 			"obj-23" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-40" : [ "vz.attractr", "vz.attractr", 0 ],
 			"parameterbanks" : 			{
 				"0" : 				{
 					"index" : 0,
