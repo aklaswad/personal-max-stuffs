@@ -228,7 +228,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 759.0, 47.0, 87.0, 22.0 ],
+									"patching_rect" : [ 81.0, 84.0, 87.0, 22.0 ],
 									"text" : "param mirror 1"
 								}
 

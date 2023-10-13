@@ -40,6 +40,31 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"format" : 6,
+					"id" : "obj-63",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 791.0, 120.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-64",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "bang" ],
+					"patching_rect" : [ 791.0, 184.0, 34.0, 22.0 ],
+					"text" : "line~"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-62",
 					"maxclass" : "button",
 					"numinlets" : 1,
@@ -116,7 +141,7 @@
 				"box" : 				{
 					"id" : "obj-45",
 					"maxclass" : "newobj",
-					"numinlets" : 6,
+					"numinlets" : 7,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
 					"patcher" : 					{
@@ -159,6 +184,18 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-15",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 829.0, 205.0, 223.0, 22.0 ],
+									"text" : "in 7 @comment \"Fan Modulation Depth\""
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-13",
 									"maxclass" : "newobj",
@@ -231,13 +268,13 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "Param mirror(1);\r\n\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = wrap(phasor(freq), 0,1);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\n\r\n\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nif ( mirror && basePhase < 0.5 ) {\r\n  basePhase = basePhase - 1.;\r\n}\r\n\r\nleafSize = 1 / numLeaves;\r\nsurplus = (numLeaves % 1) * leafSize;\r\ngapPhase = leafSize * floor(numLeaves/2);\r\n\r\nphaseInLeaf = 0;\r\nphaseZeroOfLeaf = 0;\r\n\r\nif ( basePhase < gapPhase + 0.5 * surplus ) {\r\n  vPhase = basePhase;\r\n  phaseZeroOfLeaf = floor(vPhase / leafSize) * leafSize;\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = 0.8 + 0.2 * cos(twopi*(phaseInLeaf * 0.8));\r\n  theta = twopi * (  phaseZeroOfLeaf + (phaseInLeaf / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;\r\n}\r\nelse {\r\n  vPhase = basePhase - 1;\r\n  phaseZeroOfLeaf = leafSize * floor(vPhase/leafSize);\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = 0.8 + 0.2 * cos(twopi*(phaseInLeaf * 0.8));\r\n  theta = twopi * (  phaseZeroOfLeaf + ((phaseInLeaf) / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;\r\n}\r\n",
+									"code" : "Param mirror(1);\r\n\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = wrap(phasor(freq), 0,1);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\n\r\nmodDepth = clip(in7, 0, 1);\r\n\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nif ( mirror && basePhase < 0.5 ) {\r\n  basePhase = basePhase - 1.;\r\n}\r\n\r\nleafSize = 1 / numLeaves;\r\nsurplus = (numLeaves % 1) * leafSize;\r\ngapPhase = leafSize * floor(numLeaves/2);\r\n\r\nphaseInLeaf = 0;\r\nphaseZeroOfLeaf = 0;\r\n\r\nif ( basePhase < gapPhase + 0.5 * surplus ) {\r\n  vPhase = basePhase;\r\n  phaseZeroOfLeaf = floor(vPhase / leafSize) * leafSize;\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = (1-modDepth) + modDepth * cos(twopi*(phaseInLeaf * 1));\r\n  theta = twopi * (  phaseZeroOfLeaf + (phaseInLeaf / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;\r\n}\r\nelse {\r\n  vPhase = basePhase - 1;\r\n  phaseZeroOfLeaf = leafSize * floor(vPhase/leafSize);\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = (1-modDepth) + modDepth * cos(twopi*(phaseInLeaf * 1));\r\n  theta = twopi * (  phaseZeroOfLeaf + ((phaseInLeaf) / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;\r\n}\r\n",
 									"fontface" : 0,
 									"fontname" : "Consolas",
 									"fontsize" : 16.0,
 									"id" : "obj-5",
 									"maxclass" : "codebox",
-									"numinlets" : 6,
+									"numinlets" : 7,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 25.0, 50.0, 781.0, 627.0 ]
@@ -293,6 +330,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-5", 5 ],
 									"source" : [ "obj-13", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 6 ],
+									"source" : [ "obj-15", 0 ]
 								}
 
 							}
@@ -967,6 +1011,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-60", 0 ],
 					"source" : [ "obj-62", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-64", 0 ],
+					"source" : [ "obj-63", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-45", 6 ],
+					"source" : [ "obj-64", 0 ]
 				}
 
 			}
