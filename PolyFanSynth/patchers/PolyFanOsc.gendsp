@@ -40,13 +40,37 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 829.0, 64.0, 256.0, 22.0 ],
+					"text" : "in 6 @comment \"Phase distortion Final Target\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 844.0, 5.0, 241.0, 22.0 ],
+					"text" : "in 5 @comment \"Phase distortion Point 1 y\""
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 590.5, 5.0, 103.0, 22.0 ],
-					"text" : "in 4 @comment n"
+					"patching_rect" : [ 590.5, 5.0, 241.0, 22.0 ],
+					"text" : "in 4 @comment \"Phase distortion Point 1 x\""
 				}
 
 			}
@@ -80,23 +104,23 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 779.0, 536.0, 37.0, 22.0 ],
+					"patching_rect" : [ 787.0, 696.0, 37.0, 22.0 ],
 					"text" : "out 2"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"code" : "Param mirror(1);\r\n\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\nbasePhase = phasor(freq);\r\n\r\nif ( mirror && basePhase < 0.5 ) {\r\n  basePhase = basePhase - 1.;\r\n}\r\n\r\nphaseInLeaf = (basePhase * numLeaves) % 1;\r\nphaseZeroOfLeaf = basePhase - phaseInLeaf / numLeaves;\r\nr = 1;//fold( phaseInLeaf, 0, 0.5);\r\n\r\n// plus 0.125 to put the \"Folding gap of the fan\" to 45 degree\r\n// To provide similar sound character for L and R\r\ntheta = twopi * (phaseZeroOfLeaf + phaseInLeaf * numLeaves * leafWidth );\r\n\r\nx = cos(theta) * r;\r\ny = sin(theta) * r;\r\n\r\nout1 = fold(x, -1, 1);\r\nout2 = fold(y, -1, 1);",
+					"code" : "Param mirror(1);\r\n\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = phasor(freq);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);// * 2;\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n// + ( ((basePhase - 0.1)/0.9 )* 0.2 );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nif ( mirror && basePhase < 0.5 ) {\r\n  basePhase = basePhase - 1.;\r\n}\r\n\r\n\r\nphaseInLeaf = (basePhase * numLeaves) % 1;\r\nphaseZeroOfLeaf = basePhase - phaseInLeaf / numLeaves;\r\nr = 1;//phaseInLeaf;//1;//fold( phaseInLeaf, 0, 0.5);\r\n\r\n// plus 0.125 to put the \"Folding gap of the fan\" to 45 degree\r\n// To provide similar sound character for L and R\r\ntheta = twopi * (0.125 + phaseZeroOfLeaf + (phaseInLeaf / numLeaves) * leafWidth);\r\n\r\nx = cos(theta) * r;\r\ny = sin(theta) * r;\r\n\r\nout1 = x;//fold(x, -1, 1);\r\nout2 = y;//fold(y, -1, 1);",
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
 					"fontsize" : 12.0,
 					"id" : "obj-5",
 					"maxclass" : "codebox",
-					"numinlets" : 3,
+					"numinlets" : 6,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 25.0, 185.0, 773.0, 336.0 ]
+					"patching_rect" : [ 25.0, 50.0, 781.0, 627.0 ]
 				}
 
 			}
@@ -118,7 +142,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 536.0, 37.0, 22.0 ],
+					"patching_rect" : [ 25.0, 696.0, 37.0, 22.0 ],
 					"text" : "out 1"
 				}
 
@@ -128,6 +152,27 @@
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 3 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 4 ],
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 5 ],
+					"source" : [ "obj-13", 0 ]
 				}
 
 			}
