@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 352.0, 85.0, 1310.0, 920.0 ],
+		"rect" : [ 473.0, 85.0, 944.0, 920.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,30 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-62",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 524.0, 91.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-60",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "int", "int" ],
+					"patching_rect" : [ 524.0, 127.0, 42.0, 22.0 ],
+					"text" : "t 0 0 1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-56",
 					"maxclass" : "newobj",
@@ -207,10 +231,10 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "Param mirror(1);\r\n\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = phasor(freq);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);// * 2;\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n// + ( ((basePhase - 0.1)/0.9 )* 0.2 );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nif ( mirror && basePhase < 0.5 ) {\r\n  basePhase = basePhase - 1.;\r\n}\r\n\r\n\r\nphaseInLeaf = (basePhase * numLeaves) % 1;\r\nphaseZeroOfLeaf = basePhase - phaseInLeaf / numLeaves;\r\nr = 1;//phaseInLeaf;//1;//fold( phaseInLeaf, 0, 0.5);\r\n\r\n// plus 0.125 to put the \"Folding gap of the fan\" to 45 degree\r\n// To provide similar sound character for L and R\r\ntheta = twopi * (0.125 + phaseZeroOfLeaf + (phaseInLeaf / numLeaves) * leafWidth);\r\n\r\nx = cos(theta) * r;\r\ny = sin(theta) * r;\r\n\r\nout1 = x;//fold(x, -1, 1);\r\nout2 = y;//fold(y, -1, 1);",
+									"code" : "Param mirror(1);\r\n\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = wrap(phasor(freq), 0,1);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\n\r\n\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nif ( mirror && basePhase < 0.5 ) {\r\n  basePhase = basePhase - 1.;\r\n}\r\n\r\nleafSize = 1 / numLeaves;\r\nsurplus = (numLeaves % 1) * leafSize;\r\ngapPhase = leafSize * floor(numLeaves/2);\r\n\r\nphaseInLeaf = 0;\r\nphaseZeroOfLeaf = 0;\r\n\r\nif ( basePhase < gapPhase + 0.5 * surplus ) {\r\n  vPhase = basePhase;\r\n  phaseZeroOfLeaf = floor(vPhase / leafSize) * leafSize;\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = 0.8 + 0.2 * cos(twopi*(phaseInLeaf * 0.8));\r\n  theta = twopi * (  phaseZeroOfLeaf + (phaseInLeaf / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;\r\n}\r\nelse {\r\n  vPhase = basePhase - 1;\r\n  phaseZeroOfLeaf = leafSize * floor(vPhase/leafSize);\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = 0.8 + 0.2 * cos(twopi*(phaseInLeaf * 0.8));\r\n  theta = twopi * (  phaseZeroOfLeaf + ((phaseInLeaf) / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;\r\n}\r\n",
 									"fontface" : 0,
-									"fontname" : "<Monospaced>",
-									"fontsize" : 12.0,
+									"fontname" : "Consolas",
+									"fontsize" : 16.0,
 									"id" : "obj-5",
 									"maxclass" : "codebox",
 									"numinlets" : 6,
@@ -405,7 +429,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 244.333333333333343, 209.0, 50.0, 22.0 ]
+					"patching_rect" : [ 244.333333333333343, 203.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -438,8 +462,8 @@
 			}
 , 			{
 				"box" : 				{
-					"bufsize" : 107,
-					"calccount" : 8,
+					"bufsize" : 104,
+					"calccount" : 4,
 					"id" : "obj-9",
 					"maxclass" : "scope~",
 					"numinlets" : 2,
@@ -518,7 +542,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 21.0, 536.5, 263.0, 190.0 ]
+					"patching_rect" : [ 21.0, 536.5, 263.0, 190.0 ],
+					"sono" : 1
 				}
 
 			}
@@ -594,8 +619,8 @@
 			}
 , 			{
 				"box" : 				{
-					"bufsize" : 107,
-					"calccount" : 8,
+					"bufsize" : 104,
+					"calccount" : 4,
 					"id" : "obj-27",
 					"maxclass" : "scope~",
 					"numinlets" : 2,
@@ -631,8 +656,8 @@
 			}
 , 			{
 				"box" : 				{
-					"bufsize" : 107,
-					"calccount" : 8,
+					"bufsize" : 104,
+					"calccount" : 4,
 					"id" : "obj-4",
 					"maxclass" : "scope~",
 					"numinlets" : 2,
@@ -914,6 +939,34 @@
 					"destination" : [ "obj-9", 0 ],
 					"order" : 0,
 					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-35", 0 ],
+					"source" : [ "obj-60", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
+					"source" : [ "obj-60", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-57", 0 ],
+					"source" : [ "obj-60", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-60", 0 ],
+					"source" : [ "obj-62", 0 ]
 				}
 
 			}
