@@ -2,7 +2,7 @@
 	"name" : "PolyFanSynth",
 	"version" : 1,
 	"creationdate" : 3779967553,
-	"modificationdate" : 3780056485,
+	"modificationdate" : 3780126261,
 	"viewrect" : [ 50.0, 132.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
@@ -10,12 +10,6 @@
 	"autolocalize" : 0,
 	"contents" : 	{
 		"patchers" : 		{
-			"PolyFanOsc.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1,
-				"toplevel" : 1
-			}
-,
 			"OscTest.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1

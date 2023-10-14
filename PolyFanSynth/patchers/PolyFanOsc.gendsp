@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "dsp.gen",
-		"rect" : [ 59.0, 107.0, 1055.0, 737.0 ],
+		"rect" : [ 630.0, 170.0, 1055.0, 737.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -135,9 +135,9 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = wrap(phasor(freq), 0,1);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\n\r\nmodDepth = clip(in7, 0, 1);\r\nrotate = clip(in8, 0,1);\r\n\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nleafSize = 1 / numLeaves;\r\nsurplus = (numLeaves % 1) * leafSize;\r\ngapPhase = leafSize * floor(numLeaves/2);\r\n\r\n\r\nif ( basePhase < gapPhase + 0.5 * surplus ) {\r\n  vPhase = basePhase;\r\n}\r\nelse {\r\n  vPhase = basePhase - 1;\r\n\r\n}\r\n\r\n  phaseZeroOfLeaf = leafSize * floor(vPhase/leafSize);\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = (1-modDepth) + modDepth * cos(twopi*(phaseInLeaf * 1));\r\n  theta = twopi * ( rotate + phaseZeroOfLeaf + ((phaseInLeaf) / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;",
+					"code" : "\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = wrap(phasor(freq), 0,1);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\n\r\nmodDepth = clip(in7, 0, 1);\r\nrotate = clip(in8, 0,1);\r\n\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nleafSize = 1 / numLeaves;\r\nbabyLeafAge = numLeaves % 1;\r\ngapPhase = leafSize * floor(numLeaves);\r\nphaseZeroOfLeaf = leafSize * floor(basePhase/leafSize);\r\nphaseInLeaf = 0;\r\nr = 0;\r\nthisLeafSize = 0;\r\nif ( basePhase > gapPhase ) {\r\n  thisLeafSize = 1 - gapPhase;\r\n  phaseInLeaf = (basePhase - gapPhase)/thisLeafSize;\r\n  modDepth = modDepth * babyLeafAge * babyLeafAge;\r\n}\r\nelse {\r\n  phaseInLeaf = (basePhase - phaseZeroOfLeaf)/leafSize;\r\n  thisLeafSize = leafSize;\r\n}\r\nr = (1-modDepth) + modDepth * cos(twopi*(phaseInLeaf * 1));\r\ntheta = twopi * ( rotate + phaseZeroOfLeaf + thisLeafSize * phaseInLeaf * leafWidth );\r\nx = cos(theta) * r;\r\ny = sin(theta) * r;\r\n\r\nout1 = x;\r\nout2 = y;",
 					"fontface" : 0,
-					"fontname" : "Consolas",
+					"fontname" : "<Monospaced>",
 					"fontsize" : 16.0,
 					"id" : "obj-5",
 					"maxclass" : "codebox",
@@ -242,7 +242,8 @@
 				}
 
 			}
- ]
+ ],
+		"autosave" : 0
 	}
 
 }
