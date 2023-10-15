@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 668.0, 5.0, 200.0, 22.0 ],
+					"text" : "in 4 @comment leafPhaseDistortion"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-9",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -75,13 +87,13 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "freq = in1;\r\nn = in2;\r\nteeth = in3;\r\n\r\nt0 = pi / n;\r\nfai = twopi * phasor(freq);\r\nT = (pi * (n-2)) / (2 * n) * teeth;\r\ntheta = 2 * t0 * ((fai * n / twopi) % 1);\r\np = cos(t0 + T) / cos(theta - t0 + T);\r\nout1 = cos(fai) * p;\r\nout2 = sin(fai) * p;\r\n",
+					"code" : "freq = in1;\r\nn = in2;\r\nteeth = in3;\r\nlpd = in4;\r\n\r\nt0 = pi / n;\r\nphase = phasor(freq);\r\nphaseInLeaf = (phase * n) % 1;\r\nphaseBaseOfLeaf = floor(phase * n) / n;\r\nfai = twopi * phase;\r\nT = (pi * (n-2)) / (2 * n) * teeth;\r\ntheta = 2 * t0 * ((phase * n) % 1);\r\np = cos(t0 + T) / cos(theta - t0 + T);\r\n\r\ndistortedTheta = twopi * (phaseBaseOfLeaf + pow(phaseInLeaf * n, lpd));\r\nout1 = cos(distortedTheta) * p;\r\nout2 = sin(distortedTheta) * p;\r\n",
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
 					"fontsize" : 16.0,
 					"id" : "obj-5",
 					"maxclass" : "codebox",
-					"numinlets" : 3,
+					"numinlets" : 4,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 25.0, 50.0, 781.0, 627.0 ]
@@ -116,6 +128,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 3 ],
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
