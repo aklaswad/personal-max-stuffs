@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "dsp.gen",
-		"rect" : [ 478.0, 196.0, 1224.0, 737.0 ],
+		"rect" : [ 359.0, 85.0, 1343.0, 920.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,13 +40,61 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1070.0, 81.0, 127.0, 22.0 ],
+					"text" : "in 8 @comment rotate"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 921.285714285714334, 5.0, 381.0, 22.0 ],
+					"text" : "in 7 @comment microPhaseDistortionRange @min 0.01 @max 100"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 772.571428571428555, 57.0, 354.0, 22.0 ],
+					"text" : "in 6 @comment microPhaseDistortionPower @min 0.1 @max 10"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 623.85714285714289, 33.0, 338.0, 22.0 ],
+					"text" : "in 5 @comment phaseDistortionRange @min 0.01 @max 100"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 668.0, 5.0, 200.0, 22.0 ],
-					"text" : "in 4 @comment leafPhaseDistortion"
+					"patching_rect" : [ 475.142857142857167, 5.0, 325.0, 22.0 ],
+					"text" : "in 4 @comment PhaseDistortionPower @min 0.1 @max 10"
 				}
 
 			}
@@ -57,8 +105,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 402.0, 5.0, 146.0, 22.0 ],
-					"text" : "in 3 @comment leafWidth"
+					"patching_rect" : [ 326.428571428571445, 57.0, 236.0, 22.0 ],
+					"text" : "in 3 @comment teeth @min 0. @max 0.95"
 				}
 
 			}
@@ -69,8 +117,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 213.5, 5.0, 158.0, 22.0 ],
-					"text" : "in 2 @comment numLeaves"
+					"patching_rect" : [ 177.714285714285722, 33.0, 288.0, 22.0 ],
+					"text" : "in 2 @comment numLeaves @min 2.2 @max 20000"
 				}
 
 			}
@@ -80,23 +128,23 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 787.0, 696.0, 37.0, 22.0 ],
+					"patching_rect" : [ 1070.0, 887.0, 37.0, 22.0 ],
 					"text" : "out 2"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"code" : "freq = in1;\r\nn = in2;\r\nteeth = in3;\r\nlpd = in4;\r\n\r\nt0 = pi / n;\r\nphase = phasor(freq);\r\nphaseInLeaf = (phase * n) % 1;\r\nphaseBaseOfLeaf = floor(phase * n) / n;\r\nfai = twopi * phase;\r\nT = (pi * (n-2)) / (2 * n) * teeth;\r\ntheta = 2 * t0 * ((phase * n) % 1);\r\np = cos(t0 + T) / cos(theta - t0 + T);\r\n\r\ndistortedTheta = twopi * (phaseBaseOfLeaf + pow(phaseInLeaf * n, lpd));\r\nout1 = cos(distortedTheta) * p;\r\nout2 = sin(distortedTheta) * p;\r\n",
+					"code" : "freq = in1;\r\nn = in2;\r\nteeth = in3;\r\npdPower = in4;\r\npdRange = in5;\r\npd2Power = in6;\r\npd2Range = in7;\r\nrotate = in8;\r\n\r\nt0 = pi / n;\r\nphase = pdRange * pow(phasor(freq),pdPower);\r\nphaseInLeaf = (phase * n) % 1;\r\nphaseBaseOfLeaf = floor(phase * n) / n;\r\nfai = twopi * phase;\r\nT = (pi * (n-2)) / (2 * n) * teeth;\r\ntheta = 2 * t0 * phaseInLeaf;\r\np = cos(t0 + T) / cos(theta - t0 + T);\r\n\r\ndistortedTheta = twopi * (rotate + phaseBaseOfLeaf + (pow(phaseInLeaf,pd2Power) / n) * pd2Range);\r\nout1 = cos(distortedTheta) * p;\r\nout2 = sin(distortedTheta) * p;\r\n",
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
 					"fontsize" : 16.0,
 					"id" : "obj-5",
 					"maxclass" : "codebox",
-					"numinlets" : 4,
+					"numinlets" : 8,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 25.0, 50.0, 781.0, 627.0 ]
+					"patching_rect" : [ 29.0, 110.0, 1060.0, 765.0 ]
 				}
 
 			}
@@ -107,8 +155,8 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 25.0, 5.0, 119.0, 22.0 ],
-					"text" : "in 1 @comment freq"
+					"patching_rect" : [ 29.0, 5.0, 236.0, 22.0 ],
+					"text" : "in 1 @comment freq @min 0 @max 20000"
 				}
 
 			}
@@ -118,7 +166,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 696.0, 37.0, 22.0 ],
+					"patching_rect" : [ 29.0, 887.0, 37.0, 22.0 ],
 					"text" : "out 1"
 				}
 
@@ -128,6 +176,27 @@
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 5 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 6 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 7 ],
+					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -156,6 +225,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-5", 1 ],
 					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 4 ],
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
