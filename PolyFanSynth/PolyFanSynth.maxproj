@@ -2,7 +2,7 @@
 	"name" : "PolyFanSynth",
 	"version" : 1,
 	"creationdate" : 3779967553,
-	"modificationdate" : 3780126261,
+	"modificationdate" : 3780154483,
 	"viewrect" : [ 50.0, 132.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
@@ -27,6 +27,10 @@
 				"kind" : "gendsp",
 				"local" : 1
 			}
+
+		}
+,
+		"other" : 		{
 
 		}
 
