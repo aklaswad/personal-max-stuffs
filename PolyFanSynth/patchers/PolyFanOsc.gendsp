@@ -75,7 +75,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "polygonal (freq, n, teeth) {\r\n  t0 = pi / n;\r\n  fai = twopi * phasor(freq);\r\n  T = (pi * (n-2)) / (2 * n) * teeth;\r\n  theta = 2 * t0 * ((fai * n / twopi) % 1);\r\n  p = cos(t0 + T) / cos(theta - t0 + T);\r\n  return cos(fai) * p, sin(fai) * p;\r\n}\r\n\r\nx,y = polygonal(in1,in2,in3);\r\nout1 = x;\r\nout2 = y;",
+					"code" : "freq = in1;\r\nn = in2;\r\nteeth = in3;\r\n\r\nt0 = pi / n;\r\nfai = twopi * phasor(freq);\r\nT = (pi * (n-2)) / (2 * n) * teeth;\r\ntheta = 2 * t0 * ((fai * n / twopi) % 1);\r\np = cos(t0 + T) / cos(theta - t0 + T);\r\nout1 = cos(fai) * p;\r\nout2 = sin(fai) * p;\r\n",
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
 					"fontsize" : 16.0,
