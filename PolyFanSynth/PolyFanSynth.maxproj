@@ -2,20 +2,31 @@
 	"name" : "PolyFanSynth",
 	"version" : 1,
 	"creationdate" : 3779967553,
-	"modificationdate" : 3780154483,
+	"modificationdate" : 3780215196,
 	"viewrect" : [ 50.0, 132.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
-	"showdependencies" : 1,
+	"showdependencies" : 0,
 	"autolocalize" : 0,
 	"contents" : 	{
 		"patchers" : 		{
+			"m4ldevice.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
+				"toplevel" : 1
+			}
+,
 			"OscTest.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
 			"random.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"envelopes.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -27,10 +38,6 @@
 				"kind" : "gendsp",
 				"local" : 1
 			}
-
-		}
-,
-		"other" : 		{
 
 		}
 
