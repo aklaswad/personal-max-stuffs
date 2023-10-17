@@ -2,7 +2,7 @@
 	"name" : "PolyFanSynth",
 	"version" : 1,
 	"creationdate" : 3779967553,
-	"modificationdate" : 3780215196,
+	"modificationdate" : 3780384365,
 	"viewrect" : [ 50.0, 132.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
@@ -27,6 +27,11 @@
 			}
 ,
 			"envelopes.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"applyEnvelope.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
