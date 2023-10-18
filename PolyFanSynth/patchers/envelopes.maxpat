@@ -105,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 147.0, 278.0, 31.0, 22.0 ],
+					"patching_rect" : [ 147.0, 141.0, 31.0, 22.0 ],
 					"text" : "sig~"
 				}
 
@@ -117,7 +117,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 147.0, 240.0, 39.0, 22.0 ],
+					"patching_rect" : [ 147.0, 103.0, 39.0, 22.0 ],
 					"text" : "/ 127."
 				}
 
@@ -273,7 +273,8 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_exponent" : 8.0,
-							"parameter_initial" : [ 250 ],
+							"parameter_initial" : [ 49.999999999999972 ],
+							"parameter_initial_enable" : 1,
 							"parameter_longname" : "F.Release[5]",
 							"parameter_mmax" : 60000.0,
 							"parameter_mmin" : 1.0,
@@ -334,7 +335,8 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_exponent" : 8.0,
-							"parameter_initial" : [ 1 ],
+							"parameter_initial" : [ 1.263379334265238 ],
+							"parameter_initial_enable" : 1,
 							"parameter_longname" : "F.Attack[5]",
 							"parameter_mmax" : 20000.0,
 							"parameter_shortname" : "F.Attack",
@@ -487,7 +489,6 @@
 , 			{
 				"box" : 				{
 					"attack_time" : 1.263379334265238,
-					"decay_time" : 9197.44733026574977,
 					"id" : "obj-49",
 					"maxclass" : "live.adsrui",
 					"numinlets" : 10,
@@ -497,7 +498,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 356.444448000000023, 0.0, 235.555555999999996, 104.0 ],
 					"release_time" : 2445.463677223113791,
-					"sustain" : 0.707106781186548,
+					"sustain" : 0.5,
 					"sustain_exponent" : 2.0
 				}
 
@@ -517,7 +518,8 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_exponent" : 8.0,
-							"parameter_initial" : [ 250 ],
+							"parameter_initial" : [ 2445.463677223113791 ],
+							"parameter_initial_enable" : 1,
 							"parameter_longname" : "F.Release[6]",
 							"parameter_mmax" : 60000.0,
 							"parameter_mmin" : 1.0,
@@ -578,7 +580,8 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_exponent" : 8.0,
-							"parameter_initial" : [ 1 ],
+							"parameter_initial" : [ 1.263379334265238 ],
+							"parameter_initial_enable" : 1,
 							"parameter_longname" : "F.Attack[4]",
 							"parameter_mmax" : 20000.0,
 							"parameter_shortname" : "F.Attack",
@@ -772,7 +775,8 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_exponent" : 8.0,
-							"parameter_initial" : [ 250 ],
+							"parameter_initial" : [ 49.999999999999972 ],
+							"parameter_initial_enable" : 1,
 							"parameter_longname" : "F.Release[4]",
 							"parameter_mmax" : 60000.0,
 							"parameter_mmin" : 1.0,
@@ -833,7 +837,8 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_exponent" : 8.0,
-							"parameter_initial" : [ 1 ],
+							"parameter_initial" : [ 1.263379334265238 ],
+							"parameter_initial_enable" : 1,
 							"parameter_longname" : "F.Attack[1]",
 							"parameter_mmax" : 20000.0,
 							"parameter_shortname" : "F.Attack",
