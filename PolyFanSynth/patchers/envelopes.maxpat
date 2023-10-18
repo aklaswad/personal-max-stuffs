@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 150.0, 236.0, 1261.0, 695.0 ],
+		"rect" : [ 150.0, 236.0, 1127.0, 695.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -275,17 +275,18 @@
 							"parameter_exponent" : 8.0,
 							"parameter_initial" : [ 49.999999999999972 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Release[5]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Env2.Release",
 							"parameter_mmax" : 60000.0,
 							"parameter_mmin" : 1.0,
-							"parameter_shortname" : "F.Release",
+							"parameter_shortname" : "Env2.Release",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 2
 						}
 
 					}
 ,
-					"varname" : "live.numbox[9]"
+					"varname" : "Env2.Release"
 				}
 
 			}
@@ -306,17 +307,18 @@
 							"parameter_exponent" : 8.0,
 							"parameter_initial" : [ 600 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Decay[6]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Env2.Decay",
 							"parameter_mmax" : 60000.0,
 							"parameter_mmin" : 1.0,
-							"parameter_shortname" : "F.Decay",
+							"parameter_shortname" : "Env2.Decay",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 2
 						}
 
 					}
 ,
-					"varname" : "live.numbox[10]"
+					"varname" : "Env2.Decay"
 				}
 
 			}
@@ -337,16 +339,17 @@
 							"parameter_exponent" : 8.0,
 							"parameter_initial" : [ 1.263379334265238 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Attack[5]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Env2.Attack",
 							"parameter_mmax" : 20000.0,
-							"parameter_shortname" : "F.Attack",
+							"parameter_shortname" : "Env2.Attack",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 2
 						}
 
 					}
 ,
-					"varname" : "live.numbox[11]"
+					"varname" : "Env2.Attack"
 				}
 
 			}
@@ -366,16 +369,17 @@
 						"valueof" : 						{
 							"parameter_initial" : [ 50 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Sustain[5]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Env2.Sustain",
 							"parameter_mmax" : 100.0,
-							"parameter_shortname" : "F.Sustain",
+							"parameter_shortname" : "Env2.Sustain",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 5
 						}
 
 					}
 ,
-					"varname" : "live.numbox[12]"
+					"varname" : "Env2.Sustain"
 				}
 
 			}
@@ -520,17 +524,18 @@
 							"parameter_exponent" : 8.0,
 							"parameter_initial" : [ 2445.463677223113791 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Release[6]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Env1.Release",
 							"parameter_mmax" : 60000.0,
 							"parameter_mmin" : 1.0,
-							"parameter_shortname" : "F.Release",
+							"parameter_shortname" : "Env1.Release",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 2
 						}
 
 					}
 ,
-					"varname" : "live.numbox[1]"
+					"varname" : "Env1.Release"
 				}
 
 			}
@@ -551,17 +556,18 @@
 							"parameter_exponent" : 8.0,
 							"parameter_initial" : [ 600 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Decay[4]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Env1.Decay",
 							"parameter_mmax" : 60000.0,
 							"parameter_mmin" : 1.0,
-							"parameter_shortname" : "F.Decay",
+							"parameter_shortname" : "Env1.Decay",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 2
 						}
 
 					}
 ,
-					"varname" : "live.numbox[2]"
+					"varname" : "Env1.Decay"
 				}
 
 			}
@@ -582,16 +588,17 @@
 							"parameter_exponent" : 8.0,
 							"parameter_initial" : [ 1.263379334265238 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Attack[4]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Env1.Attack",
 							"parameter_mmax" : 20000.0,
-							"parameter_shortname" : "F.Attack",
+							"parameter_shortname" : "Env1.Attack",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 2
 						}
 
 					}
 ,
-					"varname" : "live.numbox[4]"
+					"varname" : "Env1.Attack"
 				}
 
 			}
@@ -611,16 +618,17 @@
 						"valueof" : 						{
 							"parameter_initial" : [ 50 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Sustain[4]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Env1.Sustain",
 							"parameter_mmax" : 100.0,
-							"parameter_shortname" : "F.Sustain",
+							"parameter_shortname" : "Env1.Sustain",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 5
 						}
 
 					}
 ,
-					"varname" : "live.numbox[8]"
+					"varname" : "Env1.Sustain"
 				}
 
 			}
@@ -777,17 +785,18 @@
 							"parameter_exponent" : 8.0,
 							"parameter_initial" : [ 49.999999999999972 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Release[4]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Amp.Release",
 							"parameter_mmax" : 60000.0,
 							"parameter_mmin" : 1.0,
-							"parameter_shortname" : "F.Release",
+							"parameter_shortname" : "Amp.Release",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 2
 						}
 
 					}
 ,
-					"varname" : "live.numbox[7]"
+					"varname" : "Amp.Release"
 				}
 
 			}
@@ -808,17 +817,18 @@
 							"parameter_exponent" : 8.0,
 							"parameter_initial" : [ 600 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Decay[5]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Amp.Decay",
 							"parameter_mmax" : 60000.0,
 							"parameter_mmin" : 1.0,
-							"parameter_shortname" : "F.Decay",
+							"parameter_shortname" : "Amp.Decay",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 2
 						}
 
 					}
 ,
-					"varname" : "live.numbox[6]"
+					"varname" : "Amp.Decay"
 				}
 
 			}
@@ -839,16 +849,17 @@
 							"parameter_exponent" : 8.0,
 							"parameter_initial" : [ 1.263379334265238 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Attack[1]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Amp.Attack",
 							"parameter_mmax" : 20000.0,
-							"parameter_shortname" : "F.Attack",
+							"parameter_shortname" : "Amp.Attack",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 2
 						}
 
 					}
 ,
-					"varname" : "live.numbox[5]"
+					"varname" : "Amp.Attack"
 				}
 
 			}
@@ -868,16 +879,17 @@
 						"valueof" : 						{
 							"parameter_initial" : [ 50 ],
 							"parameter_initial_enable" : 1,
-							"parameter_longname" : "F.Sustain[6]",
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Amp.Sustain",
 							"parameter_mmax" : 100.0,
-							"parameter_shortname" : "F.Sustain",
+							"parameter_shortname" : "Amp.Sustain",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 5
 						}
 
 					}
 ,
-					"varname" : "live.numbox[3]"
+					"varname" : "Amp.Sustain"
 				}
 
 			}
