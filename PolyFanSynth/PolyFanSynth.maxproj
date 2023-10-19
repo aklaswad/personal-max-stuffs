@@ -2,7 +2,7 @@
 	"name" : "PolyFanSynth",
 	"version" : 1,
 	"creationdate" : 3779967553,
-	"modificationdate" : 3780384365,
+	"modificationdate" : 3780544727,
 	"viewrect" : [ 50.0, 132.0, 300.0, 500.0 ],
 	"autoorganize" : 0,
 	"hideprojectwindow" : 0,
@@ -35,6 +35,16 @@
 				"kind" : "patcher",
 				"local" : 1
 			}
+,
+			"ScopeXYZ.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/Ableton/User Library/MyM4L/maxworks/PolyFanSynth/patchers",
+					"projectrelativepath" : "./patchers"
+				}
+
+			}
 
 		}
 ,
@@ -42,6 +52,16 @@
 			"PolyFanOsc.gendsp" : 			{
 				"kind" : "gendsp",
 				"local" : 1
+			}
+,
+			"ScopeXYZ.js" : 			{
+				"kind" : "javascript",
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/Ableton/User Library/MyM4L/maxworks/PolyFanSynth/patchers",
+					"projectrelativepath" : "./patchers"
+				}
+
 			}
 
 		}

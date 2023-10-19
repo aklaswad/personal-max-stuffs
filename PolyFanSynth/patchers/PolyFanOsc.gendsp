@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "dsp.gen",
-		"rect" : [ 359.0, 85.0, 1343.0, 920.0 ],
+		"rect" : [ 359.0, 85.0, 1246.0, 913.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,30 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-16",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 1101.0, 202.0, 81.0, 22.0 ],
+					"text" : "buffer bufferY"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 1101.0, 168.0, 81.0, 22.0 ],
+					"text" : "buffer bufferX"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-13",
 					"maxclass" : "newobj",
@@ -135,7 +159,7 @@
 			}
 , 			{
 				"box" : 				{
-					"code" : "freq = in1;\r\nn = in2;\r\nteeth = in3;\r\npdPower = in4;\r\npdRange = in5;\r\npd2Power = in6;\r\npd2Range = in7;\r\nrotate = in8;\r\n\r\nt0 = pi / n;\r\nphase = pdRange * pow(phasor(freq),pdPower);\r\nphaseInLeaf = (phase * n) % 1;\r\nphaseBaseOfLeaf = floor(phase * n) / n;\r\nfai = twopi * phase;\r\nT = (pi * (n-2)) / (2 * n) * teeth;\r\ntheta = 2 * t0 * phaseInLeaf;\r\np = cos(t0 + T) / cos(theta - t0 + T);\r\n\r\ndistortedTheta = twopi * (rotate + phaseBaseOfLeaf + (pow(phaseInLeaf,pd2Power) / n) * pd2Range);\r\nout1 = cos(distortedTheta) * p;\r\nout2 = sin(distortedTheta) * p;\r\n",
+					"code" : "\r\nHistory count(0);\r\nHistory lastPhase(0);\r\n\r\nfreq = in1;\r\nn = in2;\r\nteeth = in3;\r\npdPower = in4;\r\npdRange = in5;\r\npd2Power = in6;\r\npd2Range = in7;\r\nrotate = in8;\r\n\r\nt0 = pi / n;\r\n\r\nbasePhase = phasor(freq);\r\nphase = pdRange * pow(basePhase,pdPower);\r\nphaseInLeaf = (phase * n) % 1;\r\nphaseBaseOfLeaf = floor(phase * n) / n;\r\nfai = twopi * phase;\r\nT = (pi * (n-2)) / (2 * n) * teeth;\r\ntheta = 2 * t0 * phaseInLeaf;\r\np = cos(t0 + T) / cos(theta - t0 + T);\r\n\r\ndistortedTheta = twopi * (rotate + phaseBaseOfLeaf + (pow(phaseInLeaf,pd2Power) / n) * pd2Range);\r\nx = cos(distortedTheta) * p;\r\ny = sin(distortedTheta) * p;\r\n\r\nout1 = x;\r\nout2 = y;\r\n\r\n\r\ncount += 1;\r\npoke(bufferX, x, count);\r\npoke(bufferY, y, count);\r\n\r\nif ( basePhase < lastPhase ) {\r\n  count = 0;\t\r\n  poke(bufferX, x, count);\r\n  poke(bufferY, y, count);\r\n}\r\nlastPhase = basePhase;\r\n\r\n",
 					"fontface" : 0,
 					"fontname" : "<Monospaced>",
 					"fontsize" : 16.0,
@@ -155,7 +179,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 29.0, 5.0, 236.0, 22.0 ],
+					"patching_rect" : [ 29.0, 9.0, 236.0, 22.0 ],
 					"text" : "in 1 @comment freq @min 0 @max 20000"
 				}
 
