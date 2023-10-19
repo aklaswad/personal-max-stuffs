@@ -1,0 +1,248 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 8,
+			"minor" : 5,
+			"revision" : 5,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 59.0, 107.0, 1055.0, 737.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 1,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 829.0, 261.0, 131.0, 22.0 ],
+					"text" : "in 8 @comment Rotate"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 829.0, 205.0, 223.0, 22.0 ],
+					"text" : "in 7 @comment \"Fan Modulation Depth\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 829.0, 64.0, 256.0, 22.0 ],
+					"text" : "in 6 @comment \"Phase distortion Final Target\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 844.0, 5.0, 241.0, 22.0 ],
+					"text" : "in 5 @comment \"Phase distortion Point 1 y\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 590.5, 5.0, 241.0, 22.0 ],
+					"text" : "in 4 @comment \"Phase distortion Point 1 x\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 402.0, 5.0, 146.0, 22.0 ],
+					"text" : "in 3 @comment leafWidth"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 213.5, 5.0, 158.0, 22.0 ],
+					"text" : "in 2 @comment numLeaves"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 787.0, 696.0, 37.0, 22.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "\r\nfreq = in1;\r\nnumLeaves = clip(in2, 0, 100000);\r\nleafWidth = clip(in3, 0, 10000);\r\n\r\nif ( numLeaves < 0.0001 ) {\r\n  numLeaves = 0.0001;\t\r\n}\r\n\r\n\r\nbasePhase = wrap(phasor(freq), 0,1);\r\n\r\np1x = clip(in4, 0, 1);\r\np1y = clip(in5, 0, 1);\r\np1z = clip(in6, -1000, 1000);\r\n\r\nmodDepth = clip(in7, 0, 1);\r\nrotate = clip(in8, 0,1);\r\n\r\nif ( basePhase < p1x ) {\r\n  basePhase = p1y * (basePhase / p1x);\r\n}\r\nelse {\r\n  basePhase = p1y + (p1z - p1y)*( (basePhase-p1x) / (1-p1x) );\r\n}\r\nbasePhase = basePhase * 1;\r\n\r\nleafSize = 1 / numLeaves;\r\nsurplus = (numLeaves % 1) * leafSize;\r\ngapPhase = leafSize * floor(numLeaves/2);\r\n\r\n\r\nif ( basePhase < gapPhase + 0.5 * surplus ) {\r\n  vPhase = basePhase;\r\n}\r\nelse {\r\n  vPhase = basePhase - 1;\r\n\r\n}\r\n\r\n  phaseZeroOfLeaf = leafSize * floor(vPhase/leafSize);\r\n  phaseInLeaf = (vPhase - phaseZeroOfLeaf)/leafSize;\r\n\r\n  r = (1-modDepth) + modDepth * cos(twopi*(phaseInLeaf * 1));\r\n  theta = twopi * ( rotate + phaseZeroOfLeaf + ((phaseInLeaf) / numLeaves) * leafWidth );\r\n  x = cos(theta) * r;\r\n  y = sin(theta) * r;\r\n\r\n  out1 = x;\r\n  out2 = y;",
+					"fontface" : 0,
+					"fontname" : "Consolas",
+					"fontsize" : 16.0,
+					"id" : "obj-5",
+					"maxclass" : "codebox",
+					"numinlets" : 8,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 25.0, 50.0, 781.0, 627.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 25.0, 5.0, 119.0, 22.0 ],
+					"text" : "in 1 @comment freq"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 25.0, 696.0, 37.0, 22.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 3 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 4 ],
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 5 ],
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 6 ],
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 7 ],
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-5", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 1 ],
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 2 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+ ]
+	}
+
+}
