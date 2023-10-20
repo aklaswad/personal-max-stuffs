@@ -40,13 +40,102 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-97",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 335.0, 838.0, 61.0, 23.0 ],
+					"text" : "active $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-95",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 339.035713928086352, 803.0, 35.0, 23.0 ],
+					"text" : "== 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-93",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "float" ],
+					"patching_rect" : [ 521.5, 782.0, 32.0, 23.0 ],
+					"text" : "* -1."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-91",
+					"maxclass" : "live.dial",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 517.0, 718.0, 41.0, 48.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1035.0, 97.5, 41.0, 48.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_initial" : [ 50.0 ],
+							"parameter_initial_enable" : 1,
+							"parameter_linknames" : 1,
+							"parameter_longname" : "Stereo width",
+							"parameter_mmax" : 100.0,
+							"parameter_shortname" : "width",
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 5
+						}
+
+					}
+,
+					"varname" : "Stereo width"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-89",
+					"maxclass" : "newobj",
+					"numinlets" : 4,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "signal" ],
+					"patching_rect" : [ 451.5, 818.0, 55.0, 23.0 ],
+					"text" : "pan2 10"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-88",
+					"maxclass" : "newobj",
+					"numinlets" : 4,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "signal" ],
+					"patching_rect" : [ 392.0, 818.0, 55.0, 23.0 ],
+					"text" : "pan2 10"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-83",
 					"maxclass" : "live.comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 307.0, 730.0, 150.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1035.0, 133.5, 100.0, 18.0 ],
+					"presentation_rect" : [ 1035.0, 49.5, 100.0, 18.0 ],
 					"text" : "Output Mode",
 					"textjustification" : 0
 				}
@@ -59,7 +148,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 428.0, 778.0, 29.5, 23.0 ],
+					"patching_rect" : [ 517.0, 837.5, 29.5, 23.0 ],
 					"text" : "*~"
 				}
 
@@ -71,7 +160,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 428.0, 821.5, 72.0, 23.0 ],
+					"patching_rect" : [ 385.75, 934.0, 72.0, 23.0 ],
 					"text" : "selector~ 2"
 				}
 
@@ -98,7 +187,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 306.535713928086352, 755.5, 100.0, 15.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1035.0, 151.5, 100.0, 15.0 ],
+					"presentation_rect" : [ 1035.0, 69.5, 100.0, 15.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_enum" : [ "X - Y", "X*Y" ],
@@ -122,7 +211,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 328.0, 821.5, 72.0, 23.0 ],
+					"patching_rect" : [ 285.75, 934.0, 72.0, 23.0 ],
 					"text" : "selector~ 2"
 				}
 
@@ -302,7 +391,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 417.0, 966.0, 155.0, 23.0 ],
+					"patching_rect" : [ 413.0, 1002.5, 155.0, 23.0 ],
 					"text" : "buffer~ scopexyz_Y 1000"
 				}
 
@@ -314,7 +403,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "float", "bang" ],
-					"patching_rect" : [ 417.0, 934.0, 155.0, 23.0 ],
+					"patching_rect" : [ 413.0, 970.5, 155.0, 23.0 ],
 					"text" : "buffer~ scopexyz_X 1000"
 				}
 
@@ -1603,7 +1692,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 328.0, 858.0, 119.0, 23.0 ],
+					"patching_rect" : [ 285.75, 970.5, 119.0, 23.0 ],
 					"text" : "plugout~"
 				}
 
@@ -2460,16 +2549,16 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 1 ],
-					"order" : 1,
+					"destination" : [ "obj-79", 0 ],
+					"order" : 0,
 					"source" : [ "obj-5", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-79", 0 ],
-					"order" : 0,
+					"destination" : [ "obj-88", 0 ],
+					"order" : 1,
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -2682,7 +2771,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-77", 1 ],
+					"destination" : [ "obj-79", 1 ],
 					"order" : 0,
 					"source" : [ "obj-7", 0 ]
 				}
@@ -2690,7 +2779,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-79", 1 ],
+					"destination" : [ "obj-89", 0 ],
 					"order" : 1,
 					"source" : [ "obj-7", 0 ]
 				}
@@ -2743,7 +2832,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"order" : 1,
+					"order" : 2,
 					"source" : [ "obj-75", 0 ]
 				}
 
@@ -2752,6 +2841,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-77", 0 ],
 					"order" : 0,
+					"source" : [ "obj-75", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-95", 0 ],
+					"order" : 1,
 					"source" : [ "obj-75", 0 ]
 				}
 
@@ -2837,8 +2934,73 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-2", 1 ],
+					"source" : [ "obj-88", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-77", 1 ],
+					"source" : [ "obj-88", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 1 ],
+					"source" : [ "obj-89", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-77", 1 ],
+					"source" : [ "obj-89", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-61", 0 ],
 					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-88", 1 ],
+					"order" : 1,
+					"source" : [ "obj-91", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-93", 0 ],
+					"order" : 0,
+					"source" : [ "obj-91", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-89", 1 ],
+					"source" : [ "obj-93", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-97", 0 ],
+					"source" : [ "obj-95", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-91", 0 ],
+					"source" : [ "obj-97", 0 ]
 				}
 
 			}
@@ -2887,6 +3049,7 @@
 			"obj-59::obj-164" : [ "live.numbox[21]", "live.numbox", 0 ],
 			"obj-59::obj-170" : [ "live.numbox[22]", "live.numbox", 0 ],
 			"obj-59::obj-28" : [ "live.numbox[20]", "live.numbox", 0 ],
+			"obj-91" : [ "Stereo width", "width", 0 ],
 			"parameterbanks" : 			{
 				"0" : 				{
 					"index" : 0,
@@ -3095,6 +3258,13 @@
 				"name" : "envelopes.maxpat",
 				"bootpath" : "~/Documents/Ableton/User Library/MyM4L/maxworks/PolyFanSynth/patchers",
 				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pan2.maxpat",
+				"bootpath" : "~/AppData/Roaming/Cycling '74/Max 8/examples/spatialization/panning/lib",
+				"patcherrelativepath" : "../../../../../../../AppData/Roaming/Cycling '74/Max 8/examples/spatialization/panning/lib",
 				"type" : "JSON",
 				"implicit" : 1
 			}
