@@ -10,6 +10,7 @@ var Samples = 200
 var bufX
 var bufY
 var viewMode = 0
+var walkerTick = 0
 draw()
 
 function draw() {
@@ -37,20 +38,20 @@ function draw() {
 
     shapeorient(0, 90, 0)
     glcolor(0, 0.5, 0)
-    moveto(1, 0.5, 1)
-    plane(1, 0.5, 1, 0.5)
+    moveto(1, 0, 0)
+    plane(2, 1, 2, 1)
 
-    glcolor(0.2, 0.2, 0.6)
-    moveto(0.5, 0, 1)
     shapeorient(90, 0, 90)
-    plane(1, 0.5, 1, 0.5)
+    glcolor(0.2, 0.2, 0.6)
+    moveto(0, 1, 0)
+    plane(2, 1, 2, 1)
 
     shapeslice(4, 4)
 
-    glcolor(0.9, 0.3, 0.3, 0.6)
-    moveto(0.5, 0.5, 2)
     shapeorient(0, 0, 0)
-    plane(0.5, 0.5, 0.5, 0.5)
+    glcolor(0.9, 0.3, 0.3, 0.6)
+    moveto(0, 0, 2)
+    plane(1, 1, 1, 1)
 
     gllinewidth(3)
 
@@ -61,8 +62,8 @@ function draw() {
     var samplesY = []
     var j = 0;
     for (var i = 0; i < Samples; i += step) {
-      samplesX[j] = -0.5 * originalSamplesX[i] + 0.5
-      samplesY[j] =  0.5 * originalSamplesY[i] + 0.5
+      samplesX[j] = originalSamplesX[i]
+      samplesY[j] = originalSamplesY[i]
       j++
     }
     var len = j
@@ -73,7 +74,7 @@ function draw() {
     for (var i = 1; i < len; i++) {
       var x = samplesX[i]
       var y = samplesY[i]
-      var z = 2 * i / len
+      var z = 4 * i / len - 2
       lineto(1, y, z)
     }
 
@@ -82,9 +83,9 @@ function draw() {
     for (var i = 1; i < len; i++ ) {
       var x = samplesX[i]
       var y = samplesY[i]
-      var z = 2 * i / len
+      var z = 4 * i / len - 2
 
-      lineto(x, 0, z)
+      lineto(x, 1, z)
     }
 
     glcolor(0.8, 0.4, 0.4, 1)
@@ -103,7 +104,7 @@ function draw() {
     for (var i = 1; i < len; i++ ) {
       var x = samplesX[i]
       var y = samplesY[i]
-      var z = 2 * i / len
+      var z = 4 * i / len - 2
       cube(0.01, 0.01, 0.01)
       lineto(x, y, z)
     }
@@ -113,34 +114,42 @@ function draw() {
     switch (viewMode) {
     case 0:
       glulookat(
-        -0.55, 0.8, -0.9,
-        0.4, 0.4, 0.4,
-        0, 1, 0
+        -1.8, -1.8, 3.6,
+        0, 0, 1,
+        0, -1, 0
       )
       break;
     case 1:
       glulookat(
-        3, 0.5, 1,
-        0, 0.5, 1,
+        5, 0, 0,
+        0, 0, 0,
         0, 1, 0
       )
       break;
 
     case 2:
       glulookat(
-        0.5, 3, 1,
-        0.5, 0, 1,
-        0, 1, 0
+        0, 5, 0,
+        0, 0, 0,
+        1, 0, 0
       )
       break;
     case 3:
       glulookat(
-        0.5, 0.5, 3,
-        0.5, 0.5, 0,
+        0, 0, 4.3,
+        0, 0, 0,
         0, 1, 0
       )
       break;
-
+    case 4:
+      var r = 0.3 + Math.sin(walkerTick / 400) * 4
+      glulookat(
+        Math.cos(walkerTick / 100) * r, Math.cos(walkerTick / 300) * r, Math.cos(walkerTick / 200) * r,
+        Math.cos(walkerTick/121) * 0.5, Math.cos(walkerTick/151) * 0.5, Math.cos(walkerTick / 189),
+        Math.cos(walkerTick / 800), Math.cos(walkerTick / 700), Math.cos(walkerTick / 600)
+      )
+      walkerTick++
+      break;
     }
   }
 }
