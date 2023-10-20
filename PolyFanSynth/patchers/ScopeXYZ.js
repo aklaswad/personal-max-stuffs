@@ -9,6 +9,7 @@ var bufferNameY
 var Samples = 200
 var bufX
 var bufY
+var viewMode = 0
 draw()
 
 function draw() {
@@ -109,24 +110,53 @@ function draw() {
 
     glmatrixmode("modelview")
     glloadidentity()
-    glulookat(
-      -0.55, 0.8, -0.9,
-      0.4, 0.4, 0.4,
-      0, 1, 0
-    )
+    switch (viewMode) {
+    case 0:
+      glulookat(
+        -0.55, 0.8, -0.9,
+        0.4, 0.4, 0.4,
+        0, 1, 0
+      )
+      break;
+    case 1:
+      glulookat(
+        3, 0.5, 1,
+        0, 0.5, 1,
+        0, 1, 0
+      )
+      break;
+
+    case 2:
+      glulookat(
+        0.5, 3, 1,
+        0.5, 0, 1,
+        0, 1, 0
+      )
+      break;
+    case 3:
+      glulookat(
+        0.5, 0.5, 3,
+        0.5, 0.5, 0,
+        0, 1, 0
+      )
+      break;
+
+    }
   }
 }
 
 function setbuffer (bufX, bufY ) {
   bufferNameX = bufX
   bufferNameY = bufY
-  post('set', bufferNameX, '\n')
-  post(bufferNameY, '\n')
+}
+
+function setview (mode) {
+  post('mode', mode, '\n')
+  viewMode = mode
 }
 
 function setsamples (n) {
   Samples = n
-  post(Samples)
 }
 
 function bang() {
