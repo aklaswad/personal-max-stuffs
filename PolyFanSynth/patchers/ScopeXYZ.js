@@ -10,7 +10,9 @@ var Samples = 200
 var bufX
 var bufY
 var viewMode = 0
-var walkerTick = 0
+var walkerTick = Math.random() * 1000
+var walkerRotateTick = Math.random() * 1000
+var walkerDistTick = Math.random() * 1000
 draw()
 
 function draw() {
@@ -142,13 +144,15 @@ function draw() {
       )
       break;
     case 4:
-      var r = 0.3 + Math.sin(walkerTick / 400) * 4
+      var r = 0.3 + Math.sin(walkerDistTick / 400) * 4
       glulookat(
         Math.cos(walkerTick / 100) * r, Math.cos(walkerTick / 300) * r, Math.cos(walkerTick / 200) * r,
         Math.cos(walkerTick/121) * 0.5, Math.cos(walkerTick/151) * 0.5, Math.cos(walkerTick / 189),
-        Math.cos(walkerTick / 800), Math.cos(walkerTick / 700), Math.cos(walkerTick / 600)
+        Math.cos(walkerRotateTick / 800), Math.cos(walkerRotateTick / 700), Math.cos(walkerRotateTick / 600)
       )
-      walkerTick++
+      walkerTick += 2 + 1.6 * Math.sin(walkerTick / 200)
+      walkerDistTick += 2 + 1.7 * Math.sin(walkerDistTick / 169)
+      walkerRotateTick += 2 + 1.8 * Math.sin(walkerRotateTick / 112)
       break;
     }
   }
@@ -162,6 +166,19 @@ function setbuffer (bufX, bufY ) {
 function setview (mode) {
   post('mode', mode, '\n')
   viewMode = mode
+}
+
+function newnote () {
+  if ( Math.random() < 0.1 ) {
+    walkerTick += Math.random() * 1000
+  }
+  if ( Math.random() < .1) {
+    walkerDistTick += Math.random() * 1000
+  }
+  if ( Math.random() < .1) {
+    walkerRotateTick += Math.random() * 1000
+  }
+
 }
 
 function setsamples (n) {
