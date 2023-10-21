@@ -25,7 +25,7 @@ function draw() {
 
   with (sketch) {
 
-    gldisable("depth_test")
+    //gldisable("depth_test")
     glenable("line_smooth")
 
     glpolygonmode("front", "line")
@@ -68,25 +68,22 @@ function draw() {
       samplesY[j] = originalSamplesY[i]
       j++
     }
-    var len = j
+    var len = j - 2
     //Math.ceil(Samples / step)
 
-    glcolor(.4, .9, .4, 0.6)
-    moveto(1, samplesY[0], 0)
+    glcolor(.4, .9, .4, 1)
+    moveto(1, samplesY[0], -2)
     for (var i = 1; i < len; i++) {
-      var x = samplesX[i]
       var y = samplesY[i]
       var z = 4 * i / len - 2
       lineto(1, y, z)
     }
 
-    glcolor(.5, .5, .9, 0.6)
-    moveto(samplesX[0], 0, 0)
+    glcolor(.5, .5, .9, 1)
+    moveto(samplesX[0], 0, -2)
     for (var i = 1; i < len; i++ ) {
       var x = samplesX[i]
-      var y = samplesY[i]
       var z = 4 * i / len - 2
-
       lineto(x, 1, z)
     }
 
@@ -95,21 +92,22 @@ function draw() {
     for (var i = 1; i < len; i++) {
       var x = samplesX[i]
       var y = samplesY[i]
-
       lineto(x, y, 2)
     }
 
     shapeslice(2, 2)
     gllinewidth(1)
-    glcolor( 1,1,1, 0.6 )
-    moveto(samplesX[0], samplesY[0], 0)
+    glcolor( 1, 1, 1, 1 )
+    moveto(samplesX[0], samplesY[0], -2)
+    cube(0.02, 0.02, 0.02)
     for (var i = 1; i < len; i++ ) {
       var x = samplesX[i]
       var y = samplesY[i]
       var z = 4 * i / len - 2
-      cube(0.01, 0.01, 0.01)
+      cube(0.02, 0.02, 0.02)
       lineto(x, y, z)
     }
+    cube(0.02, 0.02, 0.02)
 
     glmatrixmode("modelview")
     glloadidentity()
