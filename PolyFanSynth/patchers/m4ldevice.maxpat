@@ -40,6 +40,26 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontsize" : 9.0,
+					"id" : "obj-81",
+					"margin" : 0,
+					"maxclass" : "tab",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 889.0, 8.0, 297.0, 13.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 795.0, 0.0, 144.0, 13.0 ],
+					"rounded" : 0.0,
+					"spacing_x" : 1.0,
+					"spacing_y" : 0.0,
+					"tabs" : [ "Amp", "Env1", "Env2" ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-90",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -196,7 +216,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 115.0, 79.0, 73.0, 22.0 ],
+									"patching_rect" : [ 115.0, 79.0, 87.0, 22.0 ],
 									"text" : "#0_scope_y"
 								}
 
@@ -208,7 +228,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 29.0, 79.0, 73.0, 22.0 ],
+									"patching_rect" : [ 29.0, 79.0, 87.0, 22.0 ],
 									"text" : "#0_scope_x"
 								}
 
@@ -1672,41 +1692,12 @@
 					"name" : "envelopes.maxpat",
 					"numinlets" : 2,
 					"numoutlets" : 3,
-					"offset" : [ -712.0, 0.0 ],
+					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "signal", "signal", "signal" ],
 					"patching_rect" : [ 939.94444982873074, 129.0, 239.111100342538521, 158.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 795.0, 20.5, 238.111100342538521, 146.0 ],
 					"viewvisibility" : 1
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-128",
-					"maxclass" : "live.tab",
-					"num_lines_patching" : 1,
-					"num_lines_presentation" : 1,
-					"numinlets" : 1,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "float" ],
-					"parameter_enable" : 1,
-					"patching_rect" : [ 889.0, 8.0, 100.0, 20.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 795.0, 2.5, 100.0, 17.5 ],
-					"saved_attribute_attributes" : 					{
-						"valueof" : 						{
-							"parameter_enum" : [ "Amp", "Env1", "Env2" ],
-							"parameter_longname" : "live.tab",
-							"parameter_mmax" : 2,
-							"parameter_shortname" : "live.tab",
-							"parameter_type" : 2,
-							"parameter_unitstyle" : 9
-						}
-
-					}
-,
-					"varname" : "live.tab"
 				}
 
 			}
@@ -2073,13 +2064,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-138", 0 ],
-					"source" : [ "obj-128", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"midpoints" : [ 117.5, 231.0, 471.0, 231.0, 471.0, 333.0, 493.5, 333.0 ],
 					"order" : 8,
@@ -2177,7 +2161,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-24", 2 ],
 					"midpoints" : [ 1169.55555017126926, 297.0, 789.0, 297.0, 789.0, 261.0, 537.0, 261.0, 537.0, 333.0, 528.5, 333.0 ],
-					"order" : 3,
+					"order" : 1,
 					"source" : [ "obj-130", 2 ]
 				}
 
@@ -2186,7 +2170,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-24", 1 ],
 					"midpoints" : [ 1059.5, 297.0, 789.0, 297.0, 789.0, 261.0, 537.0, 261.0, 537.0, 333.0, 511.0, 333.0 ],
-					"order" : 4,
+					"order" : 1,
 					"source" : [ "obj-130", 1 ]
 				}
 
@@ -2204,7 +2188,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-37", 1 ],
 					"midpoints" : [ 1059.5, 342.0, 765.583332498868344, 342.0 ],
-					"order" : 3,
+					"order" : 2,
 					"source" : [ "obj-130", 1 ]
 				}
 
@@ -2238,7 +2222,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-40", 1 ],
 					"midpoints" : [ 1059.5, 333.0, 651.0, 333.0, 651.0, 330.0, 623.999999284744263, 330.0 ],
-					"order" : 2,
+					"order" : 3,
 					"source" : [ "obj-130", 1 ]
 				}
 
@@ -2247,7 +2231,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-44", 2 ],
 					"midpoints" : [ 1169.55555017126926, 297.0, 789.0, 297.0, 789.0, 258.0, 420.0, 258.0, 420.0, 369.0, 413.035713928086409, 369.0 ],
-					"order" : 1,
+					"order" : 3,
 					"source" : [ "obj-130", 2 ]
 				}
 
@@ -2256,7 +2240,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-44", 1 ],
 					"midpoints" : [ 1059.5, 297.0, 789.0, 297.0, 789.0, 258.0, 420.0, 258.0, 420.0, 369.0, 395.535713928086409, 369.0 ],
-					"order" : 1,
+					"order" : 4,
 					"source" : [ "obj-130", 1 ]
 				}
 
@@ -3189,6 +3173,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-138", 0 ],
+					"source" : [ "obj-81", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-84", 0 ],
 					"source" : [ "obj-82", 0 ]
 				}
@@ -3303,19 +3294,36 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-128" : [ "live.tab", "live.tab", 0 ],
+			"obj-130::obj-115" : [ "Env1.R.Slope", "Env1.R.Slope", 0 ],
+			"obj-130::obj-116" : [ "Env1.D.Slope", "Env1.D.Slope", 0 ],
+			"obj-130::obj-117" : [ "Env1.A.Slope", "Env1.A.Slope", 0 ],
+			"obj-130::obj-118" : [ "Env1.Release", "Env1.Release", 0 ],
+			"obj-130::obj-119" : [ "Env1.Decay", "Env1.Decay", 0 ],
 			"obj-130::obj-12" : [ "Amp.Attack", "Amp.Attack", 0 ],
-			"obj-130::obj-36" : [ "Amp.Release", "Amp.Release", 0 ],
-			"obj-130::obj-37" : [ "Amp.Decay", "Amp.Decay", 0 ],
+			"obj-130::obj-120" : [ "Env1.Attack", "Env1.Attack", 0 ],
+			"obj-130::obj-121" : [ "Env1.End", "Env1.End", 0 ],
+			"obj-130::obj-122" : [ "Env1.Sustain", "Env1.Sustain", 0 ],
+			"obj-130::obj-123" : [ "Env1.Peak", "Env1.Peak", 0 ],
+			"obj-130::obj-124" : [ "Env1.Initial", "Env1.Initial", 0 ],
+			"obj-130::obj-13" : [ "Amp.Initial", "Amp.Initial", 0 ],
+			"obj-130::obj-165" : [ "Env2.R.Slope", "Env2.R.Slope", 0 ],
+			"obj-130::obj-166" : [ "Env2.D.Slope", "Env2.D.Slope", 0 ],
+			"obj-130::obj-167" : [ "Env2.A.Slope", "Env2.A.Slope", 0 ],
+			"obj-130::obj-168" : [ "Env2.Release", "Env2.Release", 0 ],
+			"obj-130::obj-169" : [ "Env2.Decay", "Env2.Decay", 0 ],
+			"obj-130::obj-170" : [ "Env2.Attack[1]", "Env2.Attack", 0 ],
+			"obj-130::obj-171" : [ "Env2.End", "Env2.End", 0 ],
+			"obj-130::obj-172" : [ "Env2.Sustain", "Env2.Sustain", 0 ],
+			"obj-130::obj-173" : [ "Env2.Peak", "Env2.Peak", 0 ],
+			"obj-130::obj-174" : [ "Env2.Initial", "Env2.Initial", 0 ],
+			"obj-130::obj-24" : [ "Amp.Release", "Amp.Release", 0 ],
+			"obj-130::obj-26" : [ "Amp.R.Slope", "Amp.R.Slope", 0 ],
+			"obj-130::obj-28" : [ "Amp.D.Slope", "Amp.D.Slope", 0 ],
+			"obj-130::obj-30" : [ "Amp.A.Slope", "Amp.A.Slope", 0 ],
+			"obj-130::obj-35" : [ "Amp.Peak", "Amp.Peak", 0 ],
 			"obj-130::obj-38" : [ "Amp.Sustain", "Amp.Sustain", 0 ],
-			"obj-130::obj-50" : [ "Env1.Release", "Env1.Release", 0 ],
-			"obj-130::obj-51" : [ "Env1.Decay", "Env1.Decay", 0 ],
-			"obj-130::obj-52" : [ "Env1.Attack", "Env1.Attack", 0 ],
-			"obj-130::obj-53" : [ "Env1.Sustain", "Env1.Sustain", 0 ],
-			"obj-130::obj-64" : [ "Env2.Release", "Env2.Release", 0 ],
-			"obj-130::obj-65" : [ "Env2.Decay", "Env2.Decay", 0 ],
+			"obj-130::obj-65" : [ "Env2.Decay[1]", "Env2.Decay", 0 ],
 			"obj-130::obj-66" : [ "Env2.Attack", "Env2.Attack", 0 ],
-			"obj-130::obj-67" : [ "Env2.Sustain", "Env2.Sustain", 0 ],
 			"obj-131" : [ "live.menu", "live.menu", 0 ],
 			"obj-151" : [ "Rotate", "Rotate", 0 ],
 			"obj-216" : [ "Teeth PD Length", "Length", 0 ],
@@ -3366,18 +3374,8 @@
 					"parameter_shortname" : "Amp.Attack"
 				}
 ,
-				"obj-130::obj-36" : 				{
-					"parameter_initial" : 49.999999999999972,
-					"parameter_initial_enable" : 1,
-					"parameter_linknames" : 1,
-					"parameter_longname" : "Amp.Release",
-					"parameter_shortname" : "Amp.Release"
-				}
-,
-				"obj-130::obj-37" : 				{
-					"parameter_linknames" : 1,
-					"parameter_longname" : "Amp.Decay",
-					"parameter_shortname" : "Amp.Decay"
+				"obj-130::obj-170" : 				{
+					"parameter_longname" : "Env2.Attack[1]"
 				}
 ,
 				"obj-130::obj-38" : 				{
@@ -3386,45 +3384,9 @@
 					"parameter_shortname" : "Amp.Sustain"
 				}
 ,
-				"obj-130::obj-50" : 				{
-					"parameter_initial" : 2445.463677223113791,
-					"parameter_initial_enable" : 1,
-					"parameter_linknames" : 1,
-					"parameter_longname" : "Env1.Release",
-					"parameter_shortname" : "Env1.Release"
-				}
-,
-				"obj-130::obj-51" : 				{
-					"parameter_linknames" : 1,
-					"parameter_longname" : "Env1.Decay",
-					"parameter_shortname" : "Env1.Decay"
-				}
-,
-				"obj-130::obj-52" : 				{
-					"parameter_initial" : 1.263379334265238,
-					"parameter_initial_enable" : 1,
-					"parameter_linknames" : 1,
-					"parameter_longname" : "Env1.Attack",
-					"parameter_shortname" : "Env1.Attack"
-				}
-,
-				"obj-130::obj-53" : 				{
-					"parameter_linknames" : 1,
-					"parameter_longname" : "Env1.Sustain",
-					"parameter_shortname" : "Env1.Sustain"
-				}
-,
-				"obj-130::obj-64" : 				{
-					"parameter_initial" : 49.999999999999972,
-					"parameter_initial_enable" : 1,
-					"parameter_linknames" : 1,
-					"parameter_longname" : "Env2.Release",
-					"parameter_shortname" : "Env2.Release"
-				}
-,
 				"obj-130::obj-65" : 				{
 					"parameter_linknames" : 1,
-					"parameter_longname" : "Env2.Decay",
+					"parameter_longname" : "Env2.Decay[1]",
 					"parameter_shortname" : "Env2.Decay"
 				}
 ,
@@ -3434,12 +3396,6 @@
 					"parameter_linknames" : 1,
 					"parameter_longname" : "Env2.Attack",
 					"parameter_shortname" : "Env2.Attack"
-				}
-,
-				"obj-130::obj-67" : 				{
-					"parameter_linknames" : 1,
-					"parameter_longname" : "Env2.Sustain",
-					"parameter_shortname" : "Env2.Sustain"
 				}
 ,
 				"obj-24::obj-164" : 				{
