@@ -61,7 +61,7 @@ function draw() {
     shapeslice(4, 4)
 
     shapeorient(0, 0, 0)
-    glcolor(0.9, 0.3, 0.3, 0.6)
+    glcolor(0.95, 0.3, 0.3, 0.3)
     moveto(0, 0, -2)
     plane(1, 1, 1, 1)
 
@@ -79,7 +79,6 @@ function draw() {
       j++
     }
     var len = j - 2
-    //Math.ceil(Samples / step)
 
     glcolor(.6, .95, .6, 1)
     moveto(1.01, samplesY[0], -2)
@@ -123,7 +122,7 @@ function draw() {
     cube(0.02, 0.02, 0.02)
 
 
-    if ( viewMode === ViewModeY || 1) {
+    if ( viewMode === ViewModeY ) {
       glpolygonmode("front", "fill")
       glpolygonmode("back", "line")
       shapeorient(0, 90, 0)

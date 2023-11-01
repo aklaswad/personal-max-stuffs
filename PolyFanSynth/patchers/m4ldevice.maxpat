@@ -431,7 +431,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 245.0, 719.0, 41.0, 48.0 ],
+					"patching_rect" : [ 301.0, 711.5, 41.0, 48.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1035.0, 97.5, 41.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
