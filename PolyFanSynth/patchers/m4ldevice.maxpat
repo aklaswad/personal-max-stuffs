@@ -803,7 +803,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 580.0, 792.0, 348.0, 334.0 ],
+					"patching_rect" : [ 513.0, 816.0, 348.0, 334.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 453.0, 0.0, 169.0, 169.0 ]
 				}
@@ -2918,7 +2918,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-68", 0 ],
-					"midpoints" : [ 1138.5, 972.0, 939.0, 972.0, 939.0, 777.0, 589.5, 777.0 ],
+					"midpoints" : [ 1138.5, 972.0, 939.0, 972.0, 939.0, 777.0, 522.5, 777.0 ],
 					"source" : [ "obj-60", 0 ]
 				}
 
