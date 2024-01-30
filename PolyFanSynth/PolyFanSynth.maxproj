@@ -2,11 +2,11 @@
 	"name" : "PolyFanSynth",
 	"version" : 1,
 	"creationdate" : 3779967553,
-	"modificationdate" : 3780544727,
+	"modificationdate" : 3781682790,
 	"viewrect" : [ 50.0, 132.0, 300.0, 500.0 ],
-	"autoorganize" : 0,
-	"hideprojectwindow" : 0,
-	"showdependencies" : 0,
+	"autoorganize" : 1,
+	"hideprojectwindow" : 1,
+	"showdependencies" : 1,
 	"autolocalize" : 0,
 	"contents" : 	{
 		"patchers" : 		{
@@ -51,7 +51,12 @@
 		"code" : 		{
 			"PolyFanOsc.gendsp" : 			{
 				"kind" : "gendsp",
-				"local" : 1
+				"local" : 1,
+				"singleton" : 				{
+					"bootpath" : "~/Documents/Ableton/User Library/MyM4L/maxworks/PolyFanSynth/patchers",
+					"projectrelativepath" : "./patchers"
+				}
+
 			}
 ,
 			"ScopeXYZ.js" : 			{
