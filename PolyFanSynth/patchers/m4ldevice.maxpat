@@ -96,7 +96,6 @@
 						"style" : "",
 						"subpatcher_template" : "m4l device",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-2",
